@@ -910,3 +910,34 @@ footer a {
     }
 
 }
+.project-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.project-links a:first-child {
+    background: #e50914;
+    color: white;
+}
+
+.project-links a:last-child {
+    background: #222;
+    color: white;
+}
+
+.project-links a:hover {
+    transform: translateY(-3px);
+}
