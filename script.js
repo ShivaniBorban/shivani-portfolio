@@ -149,18 +149,62 @@ window.addEventListener("scroll", () => {
    CONTACT FORM
 ========================= */
 
-const contactForm = document.getElementById("contact-form");
+// const contactForm = document.getElementById("contact-form");
 
-contactForm.addEventListener("submit", function(event) {
+// contactForm.addEventListener("submit", function(event) {
 
+//     event.preventDefault();
+
+//     const name = document.getElementById("name").value;
+
+//     alert(
+//         `Thank you, ${name}! Your message has been received.`
+//     );
+
+//     contactForm.reset();
+
+// });
+
+
+// Contact Form Functionality
+const contactForm = document.querySelector("#contact-form");
+const formStatus = document.querySelector("#form-status");
+const submitBtn = document.querySelector("#submit-btn");
+
+contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner"></i>';
+    formStatus.textContent = "";
 
-    alert(
-        `Thank you, ${name}! Your message has been received.`
-    );
+    try {
+        const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: new FormData(contactForm),
+            headers: {
+                Accept: "application/json"
+            }
+        });
 
-    contactForm.reset();
+        if (response.ok) {
+            formStatus.textContent =
+                "Message sent successfully! Thank you for contacting me.";
 
+            contactForm.reset();
+        } else {
+            formStatus.textContent =
+                "Failed to send message. Please try again.";
+        }
+    } catch (error) {
+        formStatus.textContent =
+            "Something went wrong. Please try again later.";
+
+        console.error("Contact form error:", error);
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML =
+            'Send Message <i class="fa-solid fa-paper-plane"></i>';
+    }
 });
+

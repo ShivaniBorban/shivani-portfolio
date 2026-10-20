@@ -450,48 +450,33 @@
             </div>
 
 
-            <form class="contact-form" id="contact-form">
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mvkznjya" method="POST" >
 
-                <div class="input-box">
-
-                    <input type="text" id="name" required>
-
-                    <label>Your Name</label>
-
+                 <div class="input-box">
+                     <input type="text" id="name" name="name" required >
+                      <label for="name">Your Name</label> 
                 </div>
 
+                 <div class="input-box">
+                    <input type="email" id="email" name="email" required >
+                     <label for="email">Your Email</label>
+                 </div> 
+
+                 <div class="input-box"> 
+                    <input type="text" id="subject" name="subject" required > 
+                    <label for="subject">Subject</label> 
+                </div> 
 
                 <div class="input-box">
+                     <textarea id="message" name="message" rows="5" required ></textarea>
+                    <label for="message">Your Message</label> 
+                </div> 
 
-                    <input type="email" id="email" required>
+                <button type="submit" class="btn" id="submit-btn" > Send Message
+                     <i class="fa-solid fa-paper-plane"></i>
+                 </button>
 
-                    <label>Your Email</label>
-
-                </div>
-
-
-                <div class="input-box">
-
-                    <input type="text" id="subject" required>
-
-                    <label>Subject</label>
-
-                </div>
-
-
-                <div class="input-box">
-
-                    <textarea id="message" rows="5" required></textarea>
-
-                    <label>Your Message</label>
-
-                </div>
-
-
-                <button type="submit" class="btn">
-                    Send Message
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                <p id="form-status" role="status" aria-live="polite"></p>
 
             </form>
 
